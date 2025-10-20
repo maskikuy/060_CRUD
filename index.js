@@ -39,3 +39,14 @@ app.get('/api/users', (req, res) => {
     })
 })
 
+
+app.get('/api/users', (req, res) => {
+    db.query('SELECT * FROM mahasiswa', (err, results) => {
+        if (err) {
+            console.error('Error executing query:0 ' + err.stack);
+            res.status(500).send('Error fetching users');
+            return;
+        }
+        res.json(results);
+    })
+})
